@@ -1,15 +1,23 @@
 
 require('normalize.css/normalize.css');
-require('./styles/index.scss');
+require('./styles/style.scss');
+
+// creating a global "dots" namespace
+window.dots = {
+  game: {},
+  engine: {},
+  controls: {},
+  environment: {}
+};
+
+require('./dots.js')
+require('./Controls.js')
+require('./Engine.js')
+require('./Game.js')
+
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    const pluginsTriggerElement = document.getElementById('plugins-trigger');
-    const pluginsElement = document.getElementById('plugins');
-
-    const pluginsVisibleClass = "splash-overview-plugins__list--visible";
-
-    pluginsTriggerElement.onclick = () => {
-        pluginsElement.classList.toggle(pluginsVisibleClass);
+    if (window.innerWidth <= 768) {
+      window.dots.controls.addResizeListener();
     }
 });
