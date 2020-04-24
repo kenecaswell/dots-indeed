@@ -1,0 +1,239 @@
+$primary-color: #27B917;
+$primary-background: #A917B9;
+$secondary-color: #B91727;
+$secondary-background:#1778B9;
+
+$spacing: 16px;
+$header-height: 80px;
+$footer-height: 80px;
+
+$slider-text-width: 80;
+$slider-bar-width: 180;
+
+$break-small: 768px;
+$break-large: 1024px;
+
+$slider-ball-animation: 0.1s;
+
+body {
+  margin: 0;
+  color: $primary-color;
+  box-sizing: border-box;
+  background-color: $primary-background;
+  font-family: 'Press Start 2P', cursive;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary-color;
+  font-size: 16px;
+
+  height: $header-height;
+  text-align: center;
+  padding: $spacing;
+  box-sizing: border-box;
+
+  span.game-title {
+    font-size: 40px;
+
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
+  }
+}
+
+main {
+  position: relative;
+  box-sizing: border-box;
+  color: #333333;
+  padding: 0px $spacing;
+
+  .game-screen {
+    position: absolute;
+    width: calc(100vw - 32px);
+    height: calc(100vh - #{$header-height} - #{$footer-height});
+    border-radius: 10px;
+    background-color: black;
+    overflow-y: hidden;
+    cursor: crosshair;
+
+    @media screen and (max-width: $break-small) {
+      top: 48px;
+      height: calc(100vh - #{$header-height} - #{$spacing} - 48px);
+    }
+  }
+
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+    background-color: $secondary-color;
+  }
+
+  .points {
+    position: absolute;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+    color: #FFFFFF;
+    visibility: hidden;
+    pointer-events: none;
+
+    -webkit-transition: opacity .75s ease-out;
+    -moz-transition: opacity .75s ease-out;
+    -ms-transition: opacity .75s ease-out;
+    -o-transition: opacity .75s ease-out;
+    opacity: 1;
+  }
+
+  .points.fade-out {
+    visibility: visible;
+    opacity: 0;
+  }
+}
+
+footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing $spacing * 2;
+  box-sizing: border-box;
+  width: 100vw;
+  bottom: 0;
+  height: $footer-height;
+  background-color: $primary-background;
+  user-select: none;
+
+  @media screen and (max-width: $break-small) {
+    top: 0;
+    bottom: unset;
+  }
+
+  .game-score {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.5em;
+    font-weight: 600;
+
+    .score-text {
+      @media screen and (max-width: $break-small) {
+        display: none;
+      }
+    }
+  }
+
+  .game-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: $break-small) {
+      position: absolute;
+      top: 64px;
+    }
+
+    .slider-bar {
+      display: inline-block;
+      margin-right: 10px;
+      width: #{$slider-bar-width}px;
+      height: 3px;
+      border-radius: 1px;
+      background-color: $secondary-background;
+
+      @media screen and (max-width: $break-large) {
+        margin-right: 0px;
+      }
+
+      @media screen and (max-width: $break-small) {
+        margin-right: $spacing;
+        width: calc(100vw - 150px - #{$spacing * 5});
+      }
+    }
+
+    .slider-handle {
+      position: absolute;
+      left: #{$slider-text-width + $slider-bar-width * .5}px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: grab;
+
+      @media screen and (max-width: $break-small) {
+        left: 50%;
+      }
+
+      .slider-ball {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: $primary-color;
+        border-radius: 50%;
+
+        transition: width $slider-ball-animation ease-out,
+                    height $slider-ball-animation ease-out,
+                    top $slider-ball-animation ease-out,
+                    left $slider-ball-animation ease-out;
+      }
+
+      .slider-ball.pressed {
+        top: 7.5px;
+        left: 7.5px;
+        width: 25px;
+        height: 25px;
+        cursor: grabbing;
+      }
+    }
+
+    .slider-speed-text {
+      display: inline-block;
+      margin-right: 20px;
+      min-width: #{$slider-text-width}px;
+    }
+
+    .slider-speed {
+      display: inline-block;
+      min-width: 50px;
+      text-align: right;
+
+      @media screen and (max-width: $break-large) {
+        visibility: hidden;
+        width: 0px;
+        min-width: 0px;
+      }
+
+      @media screen and (max-width: $break-small) {
+        visibility: visible;
+        width: unset;
+        min-width: 50px;
+      }
+    }
+  }
+
+  .game-toggle {
+    position: absolute;
+    width: calc(100vw - 64px);
+
+    @media screen and (max-width: $break-small) {
+      right: 32px;
+      width: unset;
+    }
+
+    .pause-button {
+      display: flex;
+      position: relative;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      padding: 1rem 2rem;
+      margin: 0 auto;
+      background: $secondary-background;
+      color: #ffffff;
+      font-size: 1rem;
+      font-family: 'Press Start 2P', sans-serif;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+}
