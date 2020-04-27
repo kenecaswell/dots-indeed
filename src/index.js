@@ -1,23 +1,15 @@
+import { Game } from './Game'
+import { Engine } from './Engine'
+import { Controls } from './Controls'
 
-require('normalize.css/normalize.css');
+// update these to work
+// import 'index.scss'
+// import 'style.scss'
+//require('normalize.css/normalize.css');
 require('./styles/style.scss');
 
-// creating a global "dots" namespace
-window.dots = {
-  game: {},
-  engine: {},
-  controls: {},
-  environment: {}
-};
-
-require('./dots.js')
-require('./Controls.js')
-require('./Engine.js')
-require('./Game.js')
-
-
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.innerWidth <= 768) {
-      window.dots.controls.addResizeListener();
-    }
-});
+  const game = new Game()
+  const engine = new Engine(game)
+  const controls = new Controls(game, engine)
+})
