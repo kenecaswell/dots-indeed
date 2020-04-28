@@ -12,7 +12,7 @@ main {
     height: calc(100vh - #{$header-height} - #{$footer-height});
     border-radius: 10px;
     background-color: black;
-    overflow-y: hidden;
+    overflow: hidden;
     cursor: crosshair;
 
     @media screen and (max-width: $break-small) {
