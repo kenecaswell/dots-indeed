@@ -42,17 +42,6 @@ module.exports = {
                             sourceMap: true
                         }
                     },
-                    // NOTE: postcss is causing problems with scss classes.
-                    // Specifically the .points class is being dropped when
-                    // using postcss.
-                    
-                    // {
-                    //     // Runs compiled CSS through postcss for vendor prefixing
-                    //     loader: 'postcss-loader',
-                    //     options: {
-                    //         sourceMap: true
-                    //     }
-                    // },
                     {
                         // compiles Sass to CSS
                         loader: 'sass-loader',
@@ -98,7 +87,7 @@ module.exports = {
         new CleanWebpackPlugin(buildPath),
         new FaviconsWebpackPlugin({
             // Your source logo
-            logo: './src/assets/icon.png',
+            logo: './src/assets/circle.png',
             // The prefix for all image files (might be a folder or a name)
             prefix: 'icons-[hash]/',
             // Generate a cache file with control hashes and
