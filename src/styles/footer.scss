@@ -12,10 +12,12 @@ footer {
   height: $footer-height;
   background-color: $primary-background;
   user-select: none;
+  overflow: hidden;
 
   @media screen and (max-width: $break-small) {
     top: 0;
     bottom: unset;
+    overflow: visible;
   }
 
   .game-score {
