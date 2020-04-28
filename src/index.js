@@ -6,8 +6,6 @@ import './styles/index.scss'
 import './styles/game.scss'
 import './styles/footer.scss'
 
-document.addEventListener("DOMContentLoaded", () => {
-  const game = new Game()
-  const engine = new Engine(game)
-  const controls = new Controls(game, engine)
-})
+const game = new Game()
+const engine = new Engine(game)
+const controls = new Controls(game, engine)
