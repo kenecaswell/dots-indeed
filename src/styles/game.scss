@@ -1,0 +1,49 @@
+@import "variables";
+
+main {
+  position: relative;
+  box-sizing: border-box;
+  color: #333333;
+  padding: 0px $spacing;
+
+  .game-screen {
+    position: absolute;
+    width: calc(100vw - 32px);
+    height: calc(100vh - #{$header-height} - #{$footer-height});
+    border-radius: 10px;
+    background-color: black;
+    overflow-y: hidden;
+    cursor: crosshair;
+
+    @media screen and (max-width: $break-small) {
+      top: 48px;
+      height: calc(100vh - #{$header-height} - #{$spacing} - 48px);
+    }
+  }
+
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+    background-color: $secondary-color;
+  }
+
+  .points {
+    position: absolute;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+    color: #FFFFFF;
+    visibility: hidden;
+    pointer-events: none;
+
+    -webkit-transition: opacity .75s ease-out;
+    -moz-transition: opacity .75s ease-out;
+    -ms-transition: opacity .75s ease-out;
+    -o-transition: opacity .75s ease-out;
+    opacity: 1;
+  }
+
+  .points.fade-out {
+    visibility: visible;
+    opacity: 0;
+  }
+}

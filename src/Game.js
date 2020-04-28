@@ -21,11 +21,6 @@ class Game {
 
   togglePause() {
     this.isPaused = !this.isPaused;
-    // if (this.isPaused) {
-    //   this.engine.pause();
-    // } else {
-    //   this.engine.loop();
-    // }
   }
 
   draw() {

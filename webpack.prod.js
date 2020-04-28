@@ -42,13 +42,17 @@ module.exports = {
                             sourceMap: true
                         }
                     },
-                    {
-                        // Runs compiled CSS through postcss for vendor prefixing
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
+                    // NOTE: postcss is causing problems with scss classes.
+                    // Specifically the .points class is being dropped when
+                    // using postcss.
+                    
+                    // {
+                    //     // Runs compiled CSS through postcss for vendor prefixing
+                    //     loader: 'postcss-loader',
+                    //     options: {
+                    //         sourceMap: true
+                    //     }
+                    // },
                     {
                         // compiles Sass to CSS
                         loader: 'sass-loader',
